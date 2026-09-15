@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
 import ScrollAnimate from '@/components/ScrollAnimate';
 import { useLanguage } from '@/context/LanguageContext';
-import { MessageSquare, Upload, CheckCircle2, Loader2, ArrowRight, MapPin, Phone, Clock } from 'lucide-react';
+import { MessageSquare, Upload, CheckCircle2, Loader2, ArrowRight } from 'lucide-react';
 
 export default function ContactPage() {
   const { t, language } = useLanguage();
@@ -76,59 +76,53 @@ export default function ContactPage() {
     }
   };
 
-  const directWhatsappUrl = `https://wa.me/201000000000?text=${encodeURIComponent(
-    language === 'ar'
-      ? 'مرحباً بيرسونا، أود التواصل المباشر للاستفسار عن خدمات النمو والتسويق.'
-      : 'Hello Persona, I would like to get in touch directly to inquire about your retail growth services.'
-  )}`;
-
   return (
     <SmoothScroll>
       <div className="min-h-screen bg-white text-black flex flex-col font-sans selection:bg-black selection:text-white">
         <Header />
 
-        <main className="flex-1 pt-32 pb-24">
-          <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <main className="flex-1 pt-28 pb-16 md:pt-32 md:pb-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
             {/* Page Title */}
-            <ScrollAnimate direction="up" className="max-w-3xl mb-16 space-y-4">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-black leading-tight">
+            <ScrollAnimate direction="up" className="max-w-3xl mb-10 sm:mb-16 space-y-3 sm:space-y-4">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-black leading-tight">
                 {t.contactPage.title}
               </h1>
-              <p className="text-zinc-600 text-lg md:text-xl font-normal leading-relaxed">
+              <p className="text-zinc-600 text-base sm:text-lg md:text-xl font-normal leading-relaxed">
                 {t.contactPage.subtitle}
               </p>
             </ScrollAnimate>
 
             <div className="max-w-3xl mx-auto">
               {/* Form Container */}
-              <ScrollAnimate direction="up" delay={0.1} className="rounded-3xl bg-zinc-50 border border-zinc-200/80 p-8 sm:p-12 shadow-sm">
-                <h2 className="text-2xl font-bold text-black tracking-tight mb-6">
+              <ScrollAnimate direction="up" delay={0.1} className="rounded-2xl sm:rounded-3xl bg-zinc-50 border border-zinc-200/80 p-6 sm:p-10 md:p-12 shadow-sm">
+                <h2 className="text-xl sm:text-2xl font-bold text-black tracking-tight mb-6">
                   {t.contactPage.formTitle}
                 </h2>
 
                 {isGenerated ? (
-                  <div className="py-12 rounded-2xl bg-emerald-50 p-6 text-center space-y-4 border border-emerald-200">
+                  <div className="py-10 sm:py-12 rounded-2xl bg-emerald-50 p-6 text-center space-y-4 border border-emerald-200">
                     <div className="w-14 h-14 bg-emerald-600 text-white rounded-full mx-auto flex items-center justify-center shadow-md">
                       <CheckCircle2 className="w-8 h-8" />
                     </div>
-                    <h3 className="text-xl font-bold text-black">
+                    <h3 className="text-lg sm:text-xl font-bold text-black">
                       {t.contactPage.previewSuccess}
                     </h3>
-                    <p className="text-xs font-mono text-zinc-600">
+                    <p className="text-xs text-zinc-600">
                       Opening official Persona WhatsApp Business channel...
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                     {errorMsg && (
-                      <div className="p-3 rounded-xl bg-red-100 border border-red-300 text-red-700 text-xs font-mono">
+                      <div className="p-3 rounded-xl bg-red-100 border border-red-300 text-red-700 text-xs">
                         {errorMsg}
                       </div>
                     )}
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-1.5">
+                        <label className="block text-xs text-zinc-600 uppercase tracking-wider mb-1.5 font-medium">
                           {t.contactPage.nameLabel}
                         </label>
                         <input
@@ -136,12 +130,12 @@ export default function ContactPage() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder={t.contactPage.namePlaceholder}
-                          className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-sm text-black focus:outline-none focus:border-black transition-colors"
+                          className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3.5 text-base sm:text-sm text-black focus:outline-none focus:border-black transition-colors"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-1.5">
+                        <label className="block text-xs text-zinc-600 uppercase tracking-wider mb-1.5 font-medium">
                           {t.contactPage.phoneLabel} <span className="text-red-600">*</span>
                         </label>
                         <input
@@ -150,14 +144,14 @@ export default function ContactPage() {
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder={t.contactPage.phonePlaceholder}
-                          className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-sm text-black focus:outline-none focus:border-black transition-colors font-mono"
+                          className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3.5 text-base sm:text-sm text-black focus:outline-none focus:border-black transition-colors"
                         />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-1.5">
+                        <label className="block text-xs text-zinc-600 uppercase tracking-wider mb-1.5 font-medium">
                           {t.contactPage.storeNameLabel}
                         </label>
                         <input
@@ -165,18 +159,18 @@ export default function ContactPage() {
                           value={storeName}
                           onChange={(e) => setStoreName(e.target.value)}
                           placeholder={t.contactPage.storeNamePlaceholder}
-                          className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-sm text-black focus:outline-none focus:border-black transition-colors"
+                          className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3.5 text-base sm:text-sm text-black focus:outline-none focus:border-black transition-colors"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-1.5">
+                        <label className="block text-xs text-zinc-600 uppercase tracking-wider mb-1.5 font-medium">
                           {t.contactPage.categoryLabel}
                         </label>
                         <select
                           value={category}
                           onChange={(e) => setCategory(e.target.value)}
-                          className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-sm text-black focus:outline-none focus:border-black transition-colors"
+                          className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3.5 text-base sm:text-sm text-black focus:outline-none focus:border-black transition-colors"
                         >
                           <option value="sneakers">{t.contactPage.categories.sneakers}</option>
                           <option value="fashion">{t.contactPage.categories.fashion}</option>
@@ -188,7 +182,7 @@ export default function ContactPage() {
 
                     {/* Photo Upload Area */}
                     <div>
-                      <label className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs text-zinc-600 uppercase tracking-wider mb-1.5 font-medium">
                         {t.contactPage.uploadLabel}
                       </label>
                       <div className="relative border border-dashed border-zinc-300 rounded-2xl bg-white p-4 text-center hover:border-zinc-500 transition-colors cursor-pointer">
@@ -205,15 +199,15 @@ export default function ContactPage() {
                               alt="Preview"
                               className="w-14 h-14 object-cover rounded-xl border border-zinc-300"
                             />
-                            <div className="text-left text-xs font-mono">
+                            <div className="text-left text-xs">
                               <p className="text-emerald-700 font-bold">✓ Image attached</p>
                               <p className="text-zinc-500">Ready for review</p>
                             </div>
                           </div>
                         ) : (
-                          <div className="flex flex-col items-center justify-center py-3 text-zinc-500">
+                          <div className="flex flex-col items-center justify-center py-2 sm:py-3 text-zinc-500">
                             <Upload className="w-6 h-6 mb-1 text-zinc-400" />
-                            <span className="text-xs font-mono text-zinc-600">
+                            <span className="text-xs text-zinc-600">
                               {t.contactPage.uploadDrag}
                             </span>
                           </div>
@@ -225,7 +219,7 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full py-4 bg-black text-white font-bold text-sm uppercase tracking-wider hover:bg-zinc-800 transition-colors rounded-full flex items-center justify-center gap-2 shadow-lg"
+                        className="w-full py-4 bg-black text-white font-bold text-sm uppercase tracking-wider hover:bg-zinc-800 transition-colors rounded-full flex items-center justify-center gap-2 shadow-lg active:scale-98"
                       >
                         {isSubmitting ? (
                           <>
@@ -241,7 +235,7 @@ export default function ContactPage() {
                         )}
                       </button>
 
-                      <p className="text-[11px] font-mono text-zinc-500 mt-3 text-center">
+                      <p className="text-[11px] text-zinc-500 mt-3 text-center">
                         {t.contactPage.whatsappNotice}
                       </p>
                     </div>
